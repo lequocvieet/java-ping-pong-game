@@ -1,5 +1,7 @@
 package Controller;
 
+import Audio.AudioPlayer;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -10,9 +12,14 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class GamePanel extends JPanel implements Runnable {
+
+    AudioPlayer backgroundMusic= new AudioPlayer("/Audio/background.wav");
+    //AudioPlayer paddleHit=new AudioPlayer("/Audio/paddleHit.wav");
     static final  int  GAME_WIDTH=1000;
     static final int   GAME_HEIGHT=(int)(GAME_WIDTH*(0.5555));//Same as the real table in ping pong original game
     static final Dimension SCREEN_SIZE= new Dimension(GAME_WIDTH,GAME_HEIGHT);
@@ -28,6 +35,7 @@ public class GamePanel extends JPanel implements Runnable {
     Ball ball;
     Score score;
     public GamePanel(){
+        playMusic();
         newPaddle();
         newBall();
         score=new Score(GAME_WIDTH,GAME_HEIGHT);
@@ -58,7 +66,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     graphics =image.getGraphics();
     draw(graphics);//only draw 2 recktangle and ball into image's graphic
-    g.drawImage(image,0,0,this);//draw image into game panel
+    g.drawImage(image,0,40,this);//draw image into game panel
     }
 
     public void draw(Graphics g){
@@ -186,6 +194,14 @@ public class GamePanel extends JPanel implements Runnable {
 
         }
     }
+    public void playMusic() {
+        backgroundMusic.play();
+        backgroundMusic.loop();
+    }
+    public void stopMusic() {
+        backgroundMusic.stop();
+    }
+
 
 
 }

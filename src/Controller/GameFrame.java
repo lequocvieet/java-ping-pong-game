@@ -3,18 +3,21 @@ package Controller;
 import javax.swing.*;
 import java.awt.*;
 
+
 public class GameFrame extends JFrame {
-    GamePanel panel;
-    public GameFrame(){
-        panel=new GamePanel();
-        this.add(panel);
-        this.setTitle("Pong Game");
+    public GameFrame() {
+
+
+       this.setTitle("Pong Game");
+        this.setSize(1012,670);
         this.setResizable(false);
         this.setBackground(Color.BLACK);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.pack();
-        this.setVisible(true);
-        this.setLocationRelativeTo(null);//align the frame appear in the center
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Admin\\Desktop\\PingPongGame\\src\\Picture\\pong.png"));
+       this.setLocationRelativeTo(null);//align the frame appear in the center
 
     }
+
+
+
 }
